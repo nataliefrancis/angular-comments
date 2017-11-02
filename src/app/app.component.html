@@ -1,4 +1,15 @@
 <h1>Comments</h1>
 <ul>
-    <li *ngFor="let comment of comments">{{comment}}</li>
+    <li *ngFor="let comment of comments">
+
+    	<input type="text" [attr.disabled]="edit_value" value="{{comment.phrase}}"><br>
+    	<input type="text" [attr.disabled]="edit_value" value ="{{comment.author}}">
+    	<input type="submit" value="Delete" (click)='deleteComment(comment)'>
+    	<input type="submit" value="Edit" (click)='editComment()'>
+    </li>
 </ul>
+
+<h2>Add a comment</h2>
+<input type="text" placeholder= "Comment" [(ngModel)]='phrase'><br>
+<input type="text" placeholder="Your name" [(ngModel)]='author'><br>
+<input type="submit" value="Submit" (click)='addComment(phrase, author)'>
